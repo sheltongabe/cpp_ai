@@ -132,9 +132,9 @@ static
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
+      <x>150</x>
       <y>530</y>
-      <w>480</w>
+      <w>490</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>GraphFileHandler
@@ -143,7 +143,7 @@ static
 -
 static
 +readGraph&lt;State&gt;(filename : string) : Graph&lt;State&gt;
-+writeGraph&lt;State&gt;(filename : string, data : Graph&lt;State&gt;) : void</panel_attributes>
++writeGraph&lt;State&gt;(filename : string, graph : Graph&lt;State&gt;) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
