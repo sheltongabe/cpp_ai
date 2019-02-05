@@ -1,27 +1,25 @@
 /**
- * @file	graph_fil_hHandler.h
- * @brief	
- *  
- * Details
- *  
- * @author	First_Last_Name	username
+ * @file	graph_file_handler.h
+ * @brief	Define a class that reads and writes graphs from a file
+ * @details
+ * You can use either static methods or create an instance of the class
+ * 
+ * @author	Gabriel Shelton	sheltongabe
  * @date	02-05-2019
- * @version	0.0
+ * @version	0.1
  */
 
-#ifndef GRAPHFILEHANDLER_H
-#define GRAPHFILEHANDLER_H
+#ifndef GRAPH_FILE_HANDLER_H
+#define GRAPH_FILE_HANDLER_H
 
-
+#include "file_handler.h"
+#include "graph.h"
 
 /**
- * @class		GraphFileHandler
- * @brief		
- * 
- * Details
- * 
+ * @class	GraphFileHandler
+ * @brief	Read in and write out files for graphs
  */
-class GraphFileHandler {
+class GraphFileHandler : public FileHandler {
 	public:
 		/**
 		 * @brief	Default Constructor
@@ -34,9 +32,20 @@ class GraphFileHandler {
 		GraphFileHandler(GraphFileHandler& copy);
 
 		/**
-		 * @brief	Move Constructor
+		 * @brief	Read in a file with FileHandler and convert it to a Graph
+		 * @param	std::string		Filename
+		 * @return 	Graph<State>	A Graph made from the data in the file
 		 */
-		GraphFileHandler(GraphFileHandler&& original);
+		template<typename State>
+		static Graph<State> readGraph(std::string filename);
+
+		/**
+		 * @brief	Write a Graph<State> to a file
+		 * @param	std::string		Filename
+		 * @param	Graph<State>	Graph to write
+		 */
+		template<typename State>
+		static void writeGraph(std::string filename, Graph<State>& graph);
 
 		/**
 		 * @brief	Destructor
@@ -44,7 +53,10 @@ class GraphFileHandler {
 		~GraphFileHandler();
 
 	private:
-
+		/// File extension for Graph files
+		static const std::string FILE_EXTENSION;
 };
+
+const std::string GraphFileHandler::FILE_EXTENSION = ".dat";
 
 #endif
