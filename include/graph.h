@@ -55,13 +55,6 @@ class Graph {
 		Graph(Graph&& original);
 
 		/**
-		 * @brief	static function that loads the Graph from a file with the given name
-		 * @param	std::string		filename
-		 * @return	Graph
-		 */
-		static Graph loadGraphFromFile(std::string);
-
-		/**
 		 * @brief	Get a reference to a Node identified by nodeId
 		 * @param	std::string		nodeId
 		 * @return	Node&
