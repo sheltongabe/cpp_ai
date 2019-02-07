@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>270</y>
+      <x>1150</x>
+      <y>150</y>
       <w>60</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>170</y>
+      <x>1210</x>
+      <y>50</y>
       <w>70</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>890</x>
-      <y>270</y>
+      <x>1270</x>
+      <y>150</y>
       <w>60</w>
       <h>30</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>190</y>
+      <x>1170</x>
+      <y>70</y>
       <w>90</w>
       <h>100</h>
     </coordinates>
@@ -48,8 +48,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>220</y>
+      <x>1230</x>
+      <y>100</y>
       <w>90</w>
       <h>70</h>
     </coordinates>
@@ -59,8 +59,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>170</y>
+      <x>800</x>
+      <y>50</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -70,8 +70,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>270</y>
+      <x>710</x>
+      <y>150</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -81,8 +81,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>270</y>
+      <x>930</x>
+      <y>150</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -92,8 +92,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
-      <y>220</y>
+      <x>750</x>
+      <y>100</y>
       <w>140</w>
       <h>70</h>
     </coordinates>
@@ -103,8 +103,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>190</y>
+      <x>860</x>
+      <y>70</y>
       <w>150</w>
       <h>100</h>
     </coordinates>
@@ -114,8 +114,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>340</y>
+      <x>480</x>
+      <y>350</y>
       <w>440</w>
       <h>130</h>
     </coordinates>
@@ -132,8 +132,8 @@ static
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>530</y>
+      <x>170</x>
+      <y>540</y>
       <w>490</w>
       <h>110</h>
     </coordinates>
@@ -149,8 +149,8 @@ static
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>530</y>
+      <x>720</x>
+      <y>540</y>
       <w>350</w>
       <h>110</h>
     </coordinates>
@@ -167,8 +167,8 @@ static
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>460</y>
+      <x>430</x>
+      <y>470</y>
       <w>280</w>
       <h>90</h>
     </coordinates>
@@ -178,12 +178,44 @@ static
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>490</y>
+      <x>680</x>
+      <y>500</y>
       <w>220</w>
       <h>60</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;200.0;20.0;200.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>60</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>GraphToTextParser
+-
+
+-
++parse(const Graph&lt;State&gt;&amp; graph) : string
+...Helper Methods...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>60</y>
+      <w>310</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>TextToGraphParser
+-
+
+-
++parse(const string&amp; text) : Graph&lt;State&gt;
+...Helper Methods...</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

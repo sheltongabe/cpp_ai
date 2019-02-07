@@ -1,26 +1,22 @@
 /**
- * @file	text_t_gGra_phParser.h
- * @brief	
+ * @file	text_to_graph_parser.h
+ * @brief	Define a class that converts text to a Graph
  *  
- * Details
- *  
- * @author	First_Last_Name	username
+ * @author	Gabriel Shelton	sheltongabe
  * @date	02-05-2019
- * @version	0.0
+ * @version	0.1
  */
 
-#ifndef TEXTTOGRAPHPARSER_H
-#define TEXTTOGRAPHPARSER_H
+#ifndef TEXT_TO_GRAPH_PARSER_H
+#define TEXT_TO_GRAPH_PARSER_H
 
 
 
 /**
- * @class		TextToGraphParser
- * @brief		
- * 
- * Details
- * 
+ * @class	TextToGraphParser
+ * @brief	Converts text to a Graph and can be done with an instance or a static method	
  */
+template<typename State>
 class TextToGraphParser {
 	public:
 		/**
@@ -34,9 +30,11 @@ class TextToGraphParser {
 		TextToGraphParser(TextToGraphParser& copy);
 
 		/**
-		 * @brief	Move Constructor
+		 * @brief	Begin Parsing the text and build a Graph object to return
+		 * @param	const std::string&	Text being converted
+		 * @return	Graph<State>		Graph created from the text
 		 */
-		TextToGraphParser(TextToGraphParser&& original);
+		static Graph<State> parse(const std::string& text);
 
 		/**
 		 * @brief	Destructor

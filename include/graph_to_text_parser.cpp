@@ -1,33 +1,34 @@
 /**
- * @file	graph_t_tTe_ptParser.cpp
- * @brief	
+ * @file	graph_to_text_parser.cpp
+ * @brief	A class to convert a Graph to text
  *  
- * Details
- *  
- * @author	First_Last_Name	username
+ * @author	Gabriel Shelton	sheltongabe
  * @date	02-05-2019
- * @version	0.0
+ * @version	0.1
  */
 
-#include "graph_t_tTe_ptParser.h"
+#include "graph_to_text_parser.h"
 
 //
 // Default Constructor
 //
-GraphToTextParser::GraphToTextParser() {
+template<typename State>
+GraphToTextParser<State>::GraphToTextParser() {
 
 }
 
 //
 // Copy Constructor
 //
-GraphToTextParser::GraphToTextParser(GraphToTextParser& copy) {
+template<typename State>
+GraphToTextParser<State>::GraphToTextParser(GraphToTextParser<State>& copy) {
 
 }
 
 //
 // Destructor 
 //
-GraphToTextParser::~GraphToTextParser() {
+template<typename State>
+GraphToTextParser<State>::~GraphToTextParser() {
 
 }
