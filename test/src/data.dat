@@ -1,6 +1,7 @@
 GraphId=Test Graph
 -
 Nodes
+-
 NodeId=Node 1
 StateId=1
 -
@@ -28,7 +29,9 @@ StateId=8
 NodeId=Node 9
 StateId=9
 -
+-
 Edges
+-
 EdgeId=1->2
 StartNode=Node 1
 EndNode=Node 2
@@ -148,4 +151,5 @@ EdgeId=9->8
 StartNode=Node 9
 EndNode=Node 8
 Cost=1
+-
 -

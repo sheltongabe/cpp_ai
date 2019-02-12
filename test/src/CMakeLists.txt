@@ -5,14 +5,14 @@
 # @author	sheltongabe		Gabriel Shelton
 # @date		2019-01-24
 
-set(EXE_NAME "${CPP_AI_LIB}_test")
+set(EXE_NAME "${CPP_AI_LIB}_node_test")
 
 # Include the src directory for now
-include_directories("${CMAKE_SOURCE_DIR}/src")
+include_directories("${CMAKE_SOURCE_DIR}/include")
 
 # Build the Executable
 add_executable(${EXE_NAME}
-	hello_test.cpp
+	node_test.cpp
 )
 
 # Link it

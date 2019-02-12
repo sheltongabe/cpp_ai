@@ -11,7 +11,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/CopyHeaders.cmake)
 
 # Set Sources
 set(LIB_SOURCES
-	"hello_world.cpp"
+	"edge.cpp"
+	"node.cpp"
+	"file_handler.cpp"
 )
 
 # Add shared Library

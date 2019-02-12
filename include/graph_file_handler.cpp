@@ -7,12 +7,14 @@
  * @version	0.1
  */
 
-#include "graph_file_handler.h"
+template<typename State>
+const std::string GraphFileHandler<State>::FILE_EXTENSION = ".dat";
 
 //
 // Default Constructor
 //
-GraphFileHandler::GraphFileHandler() : 
+template<typename State>
+GraphFileHandler<State>::GraphFileHandler() : 
 		FileHandler() {
 
 }
@@ -20,7 +22,8 @@ GraphFileHandler::GraphFileHandler() :
 //
 // Copy Constructor
 //
-GraphFileHandler::GraphFileHandler(GraphFileHandler& copy) :
+template<typename State>
+GraphFileHandler<State>::GraphFileHandler(GraphFileHandler<State>& copy) :
 		FileHandler(copy) {
 
 }
@@ -29,17 +32,22 @@ GraphFileHandler::GraphFileHandler(GraphFileHandler& copy) :
 // readGraph (std::string) -> Graph<State>
 //
 template<typename State>
-Graph<State> GraphFileHandler::readGraph(std::string filename) {
+Graph<State> GraphFileHandler<State>::readGraph(std::string filename) {
 	// Add file extension if needed
 	GraphFileHandler::addFileExtension(filename, GraphFileHandler::FILE_EXTENSION);
 	
+	// read the file and store it to text
+	std::string text = FileHandler::readFile(filename);
+
+	// Parse it into a graph and return
+	 return TextToGraphParser<State>::parse(text);
 }
 
 // 
 // writeGraph (std::string, Graph<State>&) -> void
 //
 template<typename State>
-void GraphFileHandler::writeGraph(std::string filename, Graph<State>& graph) {
+void GraphFileHandler<State>::writeGraph(std::string filename, Graph<State>& graph) {
 	// Add file extension if needed
 	GraphFileHandler::addFileExtension(filename, GraphFileHandler::FILE_EXTENSION);
 
@@ -48,7 +56,7 @@ void GraphFileHandler::writeGraph(std::string filename, Graph<State>& graph) {
 //
 // Destructor 
 //
-GraphFileHandler::~GraphFileHandler() :
-		~FileHandler() {
+template<typename State>
+GraphFileHandler<State>::~GraphFileHandler() {
 
 }

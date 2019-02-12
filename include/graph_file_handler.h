@@ -13,12 +13,14 @@
 #define GRAPH_FILE_HANDLER_H
 
 #include "file_handler.h"
+#include "text_to_graph_parser.h"
 #include "graph.h"
 
 /**
  * @class	GraphFileHandler
  * @brief	Read in and write out files for graphs
  */
+template<typename State>
 class GraphFileHandler : public FileHandler {
 	public:
 		/**
@@ -29,14 +31,13 @@ class GraphFileHandler : public FileHandler {
 		/**
 		 * @brief	Copy Constructor
 		 */
-		GraphFileHandler(GraphFileHandler& copy);
+		GraphFileHandler(GraphFileHandler<State>& copy);
 
 		/**
 		 * @brief	Read in a file with FileHandler and convert it to a Graph
 		 * @param	std::string		Filename
 		 * @return 	Graph<State>	A Graph made from the data in the file
 		 */
-		template<typename State>
 		static Graph<State> readGraph(std::string filename);
 
 		/**
@@ -44,7 +45,6 @@ class GraphFileHandler : public FileHandler {
 		 * @param	std::string		Filename
 		 * @param	Graph<State>	Graph to write
 		 */
-		template<typename State>
 		static void writeGraph(std::string filename, Graph<State>& graph);
 
 		/**
@@ -57,6 +57,6 @@ class GraphFileHandler : public FileHandler {
 		static const std::string FILE_EXTENSION;
 };
 
-const std::string GraphFileHandler::FILE_EXTENSION = ".dat";
+#include "graph_file_handler.cpp"
 
 #endif

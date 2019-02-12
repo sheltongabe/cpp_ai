@@ -48,12 +48,7 @@ class Node {
 		/**
 		 * @brief	Copy Constructor
 		 */
-		Node(Node& copy);
-
-		/**
-		 * @brief	Move Constructor
-		 */
-		Node(Node&& original);
+		Node(const Node& copy);
 
 		/**
 		 * @brief	Destructor

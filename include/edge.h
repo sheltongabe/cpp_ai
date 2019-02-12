@@ -43,12 +43,7 @@ class Edge {
 		/**
 		 * @brief	Copy Constructor
 		 */
-		Edge(Edge& copy);
-
-		/**
-		 * @brief	Move Constructor
-		 */
-		Edge(Edge&& original);
+		Edge(const Edge& copy);
 
 		/**
 		 * @brief	Destructor

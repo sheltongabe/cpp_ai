@@ -25,24 +25,12 @@ Edge::Edge() :
 //
 // Copy Constructor
 //
-Edge::Edge(Edge& copy) : 
+Edge::Edge(const Edge& copy) : 
 		edgeId(copy.edgeId),
 		graphId(copy.graphId),
 		startNode(copy.startNode),
 		endNode(copy.endNode),
 		cost(copy.cost) {
-
-}
-
-//
-// Move Constructor
-//
-Edge::Edge(Edge&& original) : 
-		edgeId(std::move(original.edgeId)),
-		graphId(std::move(original.graphId)),
-		startNode(std::move(original.startNode)),
-		endNode(std::move(original.endNode)),
-		cost(std::move(original.cost)) {
 
 }
 

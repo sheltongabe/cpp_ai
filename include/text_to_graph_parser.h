@@ -10,7 +10,10 @@
 #ifndef TEXT_TO_GRAPH_PARSER_H
 #define TEXT_TO_GRAPH_PARSER_H
 
+#include <string>
+#include <sstream>
 
+#include "graph.h"
 
 /**
  * @class	TextToGraphParser
@@ -42,7 +45,29 @@ class TextToGraphParser {
 		~TextToGraphParser();
 
 	private:
+		/**
+		 * @brief	Read in the nodes from the string stream and add to graph
+		 * @param	std::stringstream&	Text in file
+		 * @param	Graph<State>&		Graph to store to
+		 */
+		static void readNodes(std::stringstream& text, Graph<State>& graph);
 
+		/**
+		 * @brief	Read in the edges from the string stream and add to graph
+		 * @param	std::stringstream&	Text in file
+		 * @param	Graph<State>&		Graph to store to
+		 */
+		static void readEdges(std::stringstream& text, Graph<State>& graph);
+
+		/**
+		 * @brief	Read a label up to the delemiter then store the property
+		 * @param	std::stringstream&		Text in file
+		 * @param 	std::string&			string to store property to
+		 * @param	const char				Delemiter
+		 */
+		static void readProperty(std::stringstream& text, std::string& property, const char delimeter = '=');
 };
+
+#include "text_to_graph_parser.cpp"
 
 #endif

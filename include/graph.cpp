@@ -7,8 +7,6 @@
  * @version	0.1
  */
 
-#include <utility>
-
 //
 // Default Constructor
 //
@@ -22,23 +20,11 @@ Graph<State>::Graph() :
 // Copy Constructor
 //
 template<typename State>
-Graph<State>::Graph(Graph& copy) :
+Graph<State>::Graph(const Graph<State>& copy) :
 		graphId(copy.graphId),
 		nodes(copy.nodes),
 		edges(copy.edges),
 		states(copy.states) {
-
-}
-
-//
-// Move Constructor
-//
-template<typename State>
-Graph<State>::Graph(Graph&& original) :
-		graphId(original.graphId), 
-		nodes(std::move(original.nodes)),
-		edges(std::move(original.edges)),
-		states(std::move(original.states)) {
 
 }
 

@@ -5,7 +5,7 @@
  * Search algorithms will manipulate the graph
  *  
  * @author	Gabriel Shelton	sheltongabe
- * @date	01-31-2019
+ * @date	02-02-2019
  * @version	0.1
  */
 
@@ -16,7 +16,6 @@
 #include<map>
 
 #include "node.h"
-#include "graph.h"
 
 /**
  * @class		Graph
@@ -47,12 +46,7 @@ class Graph {
 		/**
 		 * @brief	Copy Constructor
 		 */
-		Graph(Graph& copy);
-
-		/**
-		 * @brief	Move Constructor
-		 */
-		Graph(Graph&& original);
+		Graph(const Graph<State>& copy);
 
 		/**
 		 * @brief	Get a reference to a Node identified by nodeId

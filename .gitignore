@@ -4,6 +4,9 @@ build/
 lib/
 include/cpp_ai/
 
+# Editor settings
+.vscode/
+
 # Prerequisites
 *.d
 
