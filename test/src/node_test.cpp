@@ -1,6 +1,6 @@
 
 #include <string>
-
+#include <algorithm>
 #include <iostream>
 
 #include "cpp_ai/graph_file_handler.h"
@@ -8,6 +8,7 @@
 
 bool outputGraphText(Graph<int>& testGraph);
 bool testGraphCopy(Graph<int>& testGraph);
+bool testGraphAddNodeEdge();
 
 int main() {
 	auto testGraph = GraphFileHandler<int>::readGraph("data.dat");
@@ -15,6 +16,7 @@ int main() {
 
 	// Begin tests
 	std::cout << "Test Graph Copy: " << ((testGraphCopy(testGraph)) ? "passed" : "failed") << '\n';
+	std::cout << "Test Add Node & edge: " << ((testGraphAddNodeEdge()) ? "passed" : "failed") << '\n';
 
 	return 0;
 }
@@ -42,4 +44,26 @@ bool outputGraphText(Graph<int>& testGraph) {
 bool testGraphCopy(Graph<int>& testGraph) {
 	Graph<int> copy(testGraph);
 	return copy == testGraph;
+}
+
+bool testGraphAddNodeEdge() {
+	Graph<std::string> g;
+	bool passed = true;
+
+	// Add an edge and node
+	std::string nodeId = g.addNode(10);
+	std::string edgeId = g.addEdge(nodeId, "root", 10);
+
+	if(g.nodes.count(nodeId) == 0 ||
+			g.edges.count(edgeId) == 0)
+		return false;
+
+	auto nodeEdgeIds = g.getNode(nodeId).neighborEdgeIds;
+	if(std::find(nodeEdgeIds.begin(), nodeEdgeIds.end(), edgeId) == nodeEdgeIds.end())
+		return false;
+	
+	if(g.getEdge(edgeId).cost != 10)
+		return false;
+
+	return passed;
 }

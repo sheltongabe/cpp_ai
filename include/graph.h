@@ -60,7 +60,7 @@ class Graph {
 		 * There is always going to be a start node called root to build your graph off of
 		 * and if you don't specify a parent for the node then it will be set to root.
 		 */
-		std::string addNode(double cost, std::string parentId = "", std::string nodeId = "");
+		std::string addNode(double cost, std::string parentId = "root", std::string nodeId = "");
 
 		/**
 		 * @brief	Add an Edge and will also adjust the neighboring nodes.

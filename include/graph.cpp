@@ -41,11 +41,13 @@ template<typename State>
 std::string Graph<State>::addNode(double cost, std::string parentId, std::string nodeId) {
 	Node n;
 	n.graphId = this->graphId;
-	n.nodeId = (nodeId != "") ? nodeId : "node_" + std::string(this->nextNodeId++);
+	n.nodeId = (nodeId != "") ? nodeId : "node_" + std::to_string(this->nextNodeId++);
+	this->nodes[n.nodeId] = n;
 
 	// Create an edge from parent to node along with the neighborEdge to parent
-	this->addEdge(parentId, nodeId, cost);
-	this->nodes[n.nodeId] = n;
+	this->addEdge(parentId, n.nodeId, cost);
+
+	return n.nodeId;
 }
 
 // 
@@ -55,16 +57,18 @@ template<typename State>
 std::string Graph<State>::addEdge(std::string source, std::string destination, double cost, std::string edgeId) {
 	Edge e;
 	e.graphId = this->graphId;
-	e.edgeId = (edgeId != "") ? edgeId : "edge_" + std::string(this->nextEdgeId++);
+	e.edgeId = (edgeId != "") ? edgeId : "edge_" + std::to_string(this->nextEdgeId++);
 	e.startNode = source;
 	e.endNode = destination;
 	e.cost = cost;
+	this->edges[e.edgeId] = e;
 
 	// Add neighbor to source
-	auto vec = this->getNode(e.startNode).neighborEdgeIds;
+	auto& vec = this->getNode(e.startNode).neighborEdgeIds;
 	vec.emplace_back(e.edgeId);
 
-	this->edges[e.edgeId] = e;
+
+	return e.edgeId;
 }
 
 // 
