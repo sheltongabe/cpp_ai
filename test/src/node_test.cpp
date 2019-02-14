@@ -6,11 +6,20 @@
 #include "cpp_ai/graph_file_handler.h"
 #include "cpp_ai/graph.h"
 
+bool outputGraphText(Graph<int>& testGraph);
+bool testGraphCopy(Graph<int>& testGraph);
+
 int main() {
-	Graph<int> g;
-
 	auto testGraph = GraphFileHandler<int>::readGraph("data.dat");
+	outputGraphText(testGraph);
 
+	// Begin tests
+	std::cout << "Test Graph Copy: " << ((testGraphCopy(testGraph)) ? "passed" : "failed") << '\n';
+
+	return 0;
+}
+
+bool outputGraphText(Graph<int>& testGraph) {
 	auto nodeMap = testGraph.nodes;
 	auto edgeMap = testGraph.edges;
 
@@ -27,6 +36,10 @@ int main() {
 		std::cout << "Destination: " << itr->second.endNode << '\n';
 		std::cout << "Cost: " << itr->second.cost << '\n';
 	}
+	return true;
+}
 
-	return 0;
+bool testGraphCopy(Graph<int>& testGraph) {
+	Graph<int> copy(testGraph);
+	return copy == testGraph;
 }

@@ -50,8 +50,37 @@ class Edge {
 		 */
 		~Edge();
 
+		friend inline bool operator==(const Edge& lhs, const Edge& rhs);
+		friend inline bool operator!=(const Edge& lhs, const Edge& rhs);
+
 	private:
 
 };
+
+//
+// operator==
+//
+inline bool operator==(const Edge& lhs, const Edge& rhs) {
+	// Check self comparison
+	if(&lhs == &rhs)
+		return true;
+
+	// Check each property
+	bool equal = true;
+	equal = (lhs.graphId == rhs.graphId) ? true : false;
+	equal = (lhs.edgeId == rhs.edgeId) ? true : false;
+	equal = (lhs.startNode == rhs.startNode) ? true : false;
+	equal = (lhs.endNode == rhs.endNode) ? true : false;
+	equal = (lhs.cost == rhs.cost) ? true : false;
+
+	return equal;
+}
+
+// 
+// operator!=
+//
+inline bool operator!=(const Edge& lhs, const Edge& rhs) {
+	return !(lhs == rhs);
+}
 
 #endif
