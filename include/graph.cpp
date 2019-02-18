@@ -103,14 +103,6 @@ Edge Graph<State>::getEdgeCopy(std::string edgeId) {
 	return this->edges.at(edgeId);
 }
 
-//
-// Destructor 
-//
-template<typename State>
-Graph<State>::~Graph() {
-
-}
-
 // 
 // operator==
 //
@@ -120,7 +112,6 @@ bool Graph<State>::operator==(const Graph<State>& rhs) {
 	if(this == &rhs)
 		return true;
 	
-	bool equal = true;
 	// check id is equal
 	if(this->graphId != rhs.graphId)
 		return false;

@@ -41,21 +41,6 @@ class Node {
 		/// Id of the state this node represents
 		std::string stateId;
 
-		/**
-		 * @brief	Default Constructor
-		 */
-		Node();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
-		Node(const Node& copy);
-
-		/**
-		 * @brief	Destructor
-		 */
-		~Node();
-
 		friend inline bool operator==(const Node& lhs, const Node& rhs);
 		friend inline bool operator!=(const Node& lhs, const Node& rhs);
 

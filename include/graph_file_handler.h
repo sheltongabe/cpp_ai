@@ -23,33 +23,23 @@
 template<typename State>
 class GraphFileHandler : public FileHandler {
 	public:
-		/**
-		 * @brief	Default Constructor
-		 */
 		GraphFileHandler();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
 		GraphFileHandler(GraphFileHandler<State>& copy);
-
+		
 		/**
 		 * @brief	Read in a file with FileHandler and convert it to a Graph
-		 * @param	std::string		Filename
+		 * @param	filename		Name of the file to read
 		 * @return 	Graph<State>	A Graph made from the data in the file
 		 */
 		static Graph<State> readGraph(std::string filename);
 
 		/**
 		 * @brief	Write a Graph<State> to a file
-		 * @param	std::string		Filename
-		 * @param	Graph<State>	Graph to write
+		 * @param	filename	Name of the file to write to
+		 * @param	graph		Graph to write to a file
 		 */
 		static void writeGraph(std::string filename, Graph<State>& graph);
 
-		/**
-		 * @brief	Destructor
-		 */
 		~GraphFileHandler();
 
 	private:

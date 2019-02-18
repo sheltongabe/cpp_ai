@@ -8,27 +8,3 @@
  */
 
 #include "graph_to_text_parser.h"
-
-//
-// Default Constructor
-//
-template<typename State>
-GraphToTextParser<State>::GraphToTextParser() {
-
-}
-
-//
-// Copy Constructor
-//
-template<typename State>
-GraphToTextParser<State>::GraphToTextParser(GraphToTextParser<State>& copy) {
-
-}
-
-//
-// Destructor 
-//
-template<typename State>
-GraphToTextParser<State>::~GraphToTextParser() {
-
-}

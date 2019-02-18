@@ -14,20 +14,6 @@
 
 #include "file_handler.h"
 
-//
-// Default Constructor
-//
-FileHandler::FileHandler() {
-
-}
-
-//
-// Copy Constructor
-//
-FileHandler::FileHandler(FileHandler& copy) {
-
-}
-
 // 
 // readFile (const std::string&) -> std::string
 //
@@ -87,11 +73,4 @@ void FileHandler::addFileExtension(std::string& filename, const std::string& ext
 		// Add the extension
 		filename += extension;
 	}
-}
-
-//
-// Destructor 
-//
-FileHandler::~FileHandler() {
-
 }

@@ -20,28 +20,12 @@
  */
 template<typename State>
 class GraphToTextParser {
-	public:
-		/**
-		 * @brief	Default Constructor
-		 */
-		GraphToTextParser();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
-		GraphToTextParser(GraphToTextParser& copy);
-
-		/**
+	public:		/**
 		 * @brief	Begin parsing the Graph into a string of data for output
-		 * @param	const Graph<State>&		Graph to parse
-		 * @return	std::string				Data after parsing
+		 * @param	graph			Graph to parse
+		 * @return	std::string		Data after parsing
 		 */
 		static std::string parse(const Graph<State>& graph);
-
-		/**
-		 * @brief	Destructor
-		 */
-		~GraphToTextParser();
 
 	private:
 

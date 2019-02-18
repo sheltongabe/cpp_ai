@@ -35,21 +35,6 @@ class Edge {
 		/// The cost to travel along this node
 		double cost;
 
-		/**
-		 * @brief	Default Constructor
-		 */
-		Edge();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
-		Edge(const Edge& copy);
-
-		/**
-		 * @brief	Destructor
-		 */
-		~Edge();
-
 		friend inline bool operator==(const Edge& lhs, const Edge& rhs);
 		friend inline bool operator!=(const Edge& lhs, const Edge& rhs);
 

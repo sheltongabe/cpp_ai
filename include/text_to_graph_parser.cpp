@@ -7,22 +7,6 @@
  * @version	0.1
  */
 
-//
-// Default Constructor
-//
-template<typename State>
-TextToGraphParser<State>::TextToGraphParser() {
-
-}
-
-//
-// Copy Constructor
-//
-template<typename State>
-TextToGraphParser<State>::TextToGraphParser(TextToGraphParser<State>& copy) {
-
-}
-
 // 
 // parse(const std::string&) -> Graph<State>
 //
@@ -126,12 +110,4 @@ void TextToGraphParser<State>::readProperty(
 	while(text.peek() != '|') {
 		property += text.get();
 	}
-}
-
-//
-// Destructor 
-//
-template<typename State>
-TextToGraphParser<State>::~TextToGraphParser() {
-
 }

@@ -7,12 +7,16 @@
 
 set(EXE_NAME "${CPP_AI_LIB}_node_test")
 
+project(${EXE_NAME})
+
 # Include the src directory for now
 include_directories("${CMAKE_SOURCE_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/../include")
 
 # Build the Executable
 add_executable(${EXE_NAME}
 	node_test.cpp
+	graph_tester.cpp
 )
 
 # Link it

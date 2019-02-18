@@ -52,9 +52,9 @@ class Graph {
 
 		/**
 		 * @brief	Add a node to the graph
-		 * @param	std::string		ParentId = "root"
-		 * @param	double			Cost
-		 * @param	std::string		NodeId = ""
+		 * @param	parentId		Id of the parent node = "root"
+		 * @param	cost			Cost to get to this node
+		 * @param	nodeId			Id of the node to make = ""
 		 * @return	std::string		NodeId
 		 * @details
 		 * There is always going to be a start node called root to build your graph off of
@@ -64,46 +64,41 @@ class Graph {
 
 		/**
 		 * @brief	Add an Edge and will also adjust the neighboring nodes.
-		 * @param	std::string		SourceId
-		 * @param	std::string		DestinationId
-		 * @param	double 			Cost
-		 * @param	std::string		EdgeId = ""
+		 * @param	sourceId		Which node to start from
+		 * @param	destinationId	Node to go to
+		 * @param	cost 			Cost to traverse between nodes
+		 * @param	edgeId			Id of this edge = ""
 		 * @return	std::string		EdgeId
 		 */
 		std::string addEdge(std::string sourceId, std::string destinationId, double cost, std::string edgeId = "");
 
 		/**
 		 * @brief	Get a reference to a Node identified by nodeId
-		 * @param	std::string		nodeId
+		 * @param	nodeId	Which node to get
 		 * @return	Node&
 		 */
 		Node& getNode(std::string nodeId);
 
 		/**
 		 * @brief	Return a copy of a Node identified by nodeId
-		 * @param	std::string		nodeId
+		 * @param	nodeId	Which node to get
 		 * @return	Node
 		 */
 		Node getNodeCopy(std::string nodeId);
 
 		/**
 		 * @brief	Return a reference to an Edge identified by edgeId
-		 * @param	std::string		edgeId
+		 * @param	edgeId	Which edge to get
 		 * @return	Edge&
 		 */
 		Edge& getEdge(std::string edgeId);
 
 		/**
 		 * @brief	Return a copy of an Edge identified by edgeId
-		 * @param	std::string		edgeId
+		 * @param	edgeId which edge to get
 		 * @return	Edge
 		 */
 		Edge getEdgeCopy(std::string edgeId);
-		
-		/**
-		 * @brief	Destructor
-		 */
-		~Graph();
 
 		bool operator==(const Graph<State>& rhs);
 		bool operator!=(const Graph<State>& rhs);

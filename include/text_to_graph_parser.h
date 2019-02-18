@@ -21,49 +21,33 @@
  */
 template<typename State>
 class TextToGraphParser {
-	public:
-		/**
-		 * @brief	Default Constructor
-		 */
-		TextToGraphParser();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
-		TextToGraphParser(TextToGraphParser& copy);
-
-		/**
+	public:		/**
 		 * @brief	Begin Parsing the text and build a Graph object to return
-		 * @param	const std::string&	Text being converted
+		 * @param	text	Text being converted
 		 * @return	Graph<State>		Graph created from the text
 		 */
 		static Graph<State> parse(const std::string& text);
 
-		/**
-		 * @brief	Destructor
-		 */
-		~TextToGraphParser();
-
 	private:
 		/**
 		 * @brief	Read in the nodes from the string stream and add to graph
-		 * @param	std::stringstream&	Text in file
-		 * @param	Graph<State>&		Graph to store to
+		 * @param	text	Text being converted, in the form of a stringstream
+		 * @param	graph	Graph to store to
 		 */
 		static void readNodes(std::stringstream& text, Graph<State>& graph);
 
 		/**
 		 * @brief	Read in the edges from the string stream and add to graph
-		 * @param	std::stringstream&	Text in file
-		 * @param	Graph<State>&		Graph to store to
+		 * @param	text	Text being converted, in the form of a stringstream
+		 * @param	graph	Graph to store to
 		 */
 		static void readEdges(std::stringstream& text, Graph<State>& graph);
 
 		/**
 		 * @brief	Read a label up to the delemiter then store the property
-		 * @param	std::stringstream&		Text in file
-		 * @param 	std::string&			string to store property to
-		 * @param	const char				Delemiter
+		 * @param	text		Text being converted, in the form of a stringstream
+		 * @param 	property	String to store property to
+		 * @param	delimeter	How to tell when the key ends and value starts
 		 */
 		static void readProperty(std::stringstream& text, std::string& property, const char delimeter = '=');
 };

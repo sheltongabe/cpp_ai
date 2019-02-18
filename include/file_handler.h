@@ -20,39 +20,24 @@
 class FileHandler {
 	public:
 		/**
-		 * @brief	Default Constructor
-		 */
-		FileHandler();
-
-		/**
-		 * @brief	Copy Constructor
-		 */
-		FileHandler(FileHandler& copy);
-
-		/**
 		 * @brief	Read the file specified in filename
-		 * @param	const std::string&	Filename
+		 * @param	filename	The name of the file
 		 * @return	std::string			File data
 		 */
 		static std::string readFile(const std::string& filename);
 
 		/**
 		 * @brief	write the data to the file specified in filename
-		 * @param	const std::string&	Filename
-		 * @param	const std::string& 	Data
+		 * @param	filename	The name of the file
+		 * @param	data		Data to write to the file
 		 */
 		static void writeFile(const std::string& filename, const std::string& data);
-
-		/**
-		 * @brief	Destructor
-		 */
-		~FileHandler();
 
 	protected:
 		/**
 		 * @brief	Add a file extension if it is missing to filename
-		 * @param	std::string&		filename
-		 * @param	const std::string&	extension
+		 * @param	filename	The name of the file
+		 * @param	extension	Extension of the file
 		 */
 		static void addFileExtension(std::string& filename, const std::string& extension);
 
