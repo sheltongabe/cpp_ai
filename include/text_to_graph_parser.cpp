@@ -110,4 +110,5 @@ void TextToGraphParser<State>::readProperty(
 	while(text.peek() != '|') {
 		property += text.get();
 	}
+	text.get();
 }
