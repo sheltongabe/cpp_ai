@@ -104,6 +104,7 @@ void TextToGraphParser<State>::readEdges(std::stringstream& text, Graph<State>& 
 
 		// Add tmpNode to graph
 		graph.edges[tmpEdge.edgeId] = tmpEdge;
+		graph.getNode(tmpEdge.startNode).neighborEdgeIds.emplace_back(tmpEdge.edgeId);
 
 		// Consume marker for end of Edge
 		std::getline(text, buffer, '-');
