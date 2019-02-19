@@ -84,7 +84,7 @@ class Graph {
 		 * @param	nodeId	Which node to get
 		 * @return	Node
 		 */
-		Node getNodeCopy(std::string nodeId);
+		Node getNode(std::string nodeId) const;
 
 		/**
 		 * @brief	Return a reference to an Edge identified by edgeId
@@ -98,7 +98,21 @@ class Graph {
 		 * @param	edgeId which edge to get
 		 * @return	Edge
 		 */
-		Edge getEdgeCopy(std::string edgeId);
+		Edge getEdge(std::string edgeId) const;
+
+		/**
+		 * @brief	Return a reference to an State identified by nodeId
+		 * @param	nodeId	Which edge to get
+		 * @return	State&
+		 */
+		State& getState(std::string nodeId);
+
+		/**
+		 * @brief	Return a copy of a State identified by nodeId
+		 * @param	nodeId 	which edge to get
+		 * @return	State
+		 */
+		State getState(std::string nodeId) const;
 
 		bool operator==(const Graph<State>& rhs);
 		bool operator!=(const Graph<State>& rhs);

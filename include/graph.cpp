@@ -80,10 +80,10 @@ Node& Graph<State>::getNode(std::string nodeId) {
 }
 
 //
-// getNodeCopy (std::string) -> Node
+// getNode (std::string) -> Node
 //
 template<typename State>
-Node Graph<State>::getNodeCopy(std::string nodeId) {
+Node Graph<State>::getNode(std::string nodeId) const {
 	return this->nodes.at(nodeId);
 }
 
@@ -91,16 +91,32 @@ Node Graph<State>::getNodeCopy(std::string nodeId) {
 // getEdge (std::string) -> Edge&
 //
 template<typename State>
-Edge& Graph<State>::getEdge(std::string nodeId) {
-	return this->edges.at(nodeId);
+Edge& Graph<State>::getEdge(std::string edgeId) {
+	return this->edges.at(edgeId);
 }
 
 // 
-// getEdgeCopy (std::string) -> Edge
+// getEdge (std::string) -> Edge
 //
 template<typename State>
-Edge Graph<State>::getEdgeCopy(std::string edgeId) {
+Edge Graph<State>::getEdge(std::string edgeId) const {
 	return this->edges.at(edgeId);
+}
+
+// 
+// getState (std::string) -> State&
+//
+template<typename State>
+State& Graph<State>::getState(std::string nodeId) {
+	return this->states.at(this->getNode(nodeId).stateId);
+}
+
+// 
+// getState (std::string) -> State
+//
+template<typename State>
+State Graph<State>::getState(std::string nodeId) const {
+	return this->states.at(this->getNode(nodeId).stateId);
 }
 
 // 

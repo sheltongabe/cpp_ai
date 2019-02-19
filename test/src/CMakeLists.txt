@@ -17,6 +17,7 @@ include_directories("${PROJECT_SOURCE_DIR}/../include")
 add_executable(${EXE_NAME}
 	node_test.cpp
 	graph_tester.cpp
+	puzzle.cpp
 )
 
 # Link it
