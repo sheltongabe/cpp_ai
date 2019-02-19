@@ -58,12 +58,12 @@ inline bool operator==(const Node& lhs, const Node& rhs) {
 
 	// Check against each property with a ternary operator
 	bool equal = true;
-	equal = (lhs.graphId == rhs.graphId) ? true : false;
-	equal = (lhs.nodeId == rhs.nodeId) ? true : false;
-	equal = (lhs.parentId == rhs.parentId) ? true : false;
-	equal = (lhs.costToOrigin == rhs.costToOrigin) ? true : false;
-	equal = (lhs.neighborEdgeIds == rhs.neighborEdgeIds) ? true : false;
-	equal = (lhs.stateId == rhs.stateId) ? true : false;
+	equal = (lhs.graphId == rhs.graphId) ? equal : false;
+	equal = (lhs.nodeId == rhs.nodeId) ? equal : false;
+	equal = (lhs.parentId == rhs.parentId) ? equal : false;
+	equal = (lhs.costToOrigin == rhs.costToOrigin) ? equal : false;
+	equal = (lhs.neighborEdgeIds == rhs.neighborEdgeIds) ? equal : false;
+	equal = (lhs.stateId == rhs.stateId) ? equal : false;
 
 	return equal;
 }
