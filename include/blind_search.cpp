@@ -10,7 +10,6 @@
 #include <iostream>
 #include <chrono>
 #include <map>
-#include <unordered_map>
 
 // 
 // breadthFirst(graph, getActions, goalTest)
@@ -68,14 +67,7 @@ void BlindSearch<State>::breadthFirst(State graph,
 			const auto child = searchGraph.addNode(1.0, node.nodeId);
 			this->searchGraph.addState(child, s);
 			int count = explored.count(s);
-			/*int count = std::count_if(explored.begin(), explored.end(), 
-					[&s](std::pair<std::string, State> item) ->bool {
-				return s == item.second;
-			});*/
-			/*count += std::count_if(frontier.begin(), frontier.end(), 
-					[this, &s](std::string nodeId) -> bool {
-				return s == searchGraph.states.at(searchGraph.getNode(nodeId).stateId);
-			});*/
+
 			if(count == 0) {
 				if(goalTest(s)) {
 					this->generateSolution(child);

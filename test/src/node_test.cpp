@@ -5,6 +5,8 @@
 #include <iostream>
 #include <functional>
 
+#include <cmath>
+
 #include "cpp_ai/blind_search.h"
 
 #include "graph_tester.h"
@@ -114,8 +116,16 @@ bool goalTest(const Puzzle& puzzle) {
 //
 double heuristicFunction(const Puzzle& puzzle) {
 
+	// For each value in the array of possible values
+	const std::vector<int> targetLocations = {8, 0, 1, 2, 3, 4, 5, 6, 7};
+	auto values = puzzle.getVector();
 
-	return 0.0;
+	double cost = 0.0;
+	for(int i = 0; i < 9; ++i) {
+		cost += abs(i / 3 - targetLocations[values[i]] / 3) + abs(i % 3 - targetLocations[values[i]] % 3);
+	}
+
+	return cost;
 }
 
 // 
@@ -145,7 +155,7 @@ std::vector<std::function<void(Puzzle&)>> getActions(const Puzzle& puzzle) {
 	}
 
 	return actions;
-	}
+}
 
 void testGraphClass() {
 	GraphTester graphTester;
