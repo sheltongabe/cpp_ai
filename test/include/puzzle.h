@@ -51,6 +51,8 @@ class Puzzle : public Graph<int> {
 		 */
 		std::vector<int> getVector() const;
 
+		friend bool operator<(const Puzzle& lhs, const Puzzle& rhs);
+		friend bool operator==(const Puzzle& lhs, const Puzzle& rhs);
 		friend std::ostream& operator<<(std::ostream& os, const Puzzle& puzzle);
 
 	private:

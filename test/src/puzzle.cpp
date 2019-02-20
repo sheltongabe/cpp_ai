@@ -102,6 +102,33 @@ std::vector<int> Puzzle::getVector() const {
 }
 
 // 
+// operator<=(const Puzzle&, const Puzzle&) -> bool
+//
+bool operator<(const Puzzle& lhs, const Puzzle& rhs) {
+	int leftCount = 0;
+	int rightCount = 0;
+	auto left = lhs.getVector();
+	auto right = rhs.getVector();
+
+	for(int i = 1; i < 9; ++i) {
+		if(left[i - 1] == i)
+			++leftCount;
+
+		if(right[i - 1] == i)
+			++rightCount;
+	}
+	
+	return leftCount < rightCount;
+}
+
+// 
+// operator==(const Puzzle&, const Puzzle&) -> bool
+//
+bool operator==(const Puzzle& lhs, const Puzzle& rhs) {
+	return (Graph<int>)lhs == (Graph<int>)rhs;
+}
+
+// 
 // operator<<(std::ostream&, const Puzzle&)
 //
 std::ostream& operator<<(std::ostream& os, const Puzzle& puzzle) {
@@ -115,6 +142,7 @@ std::ostream& operator<<(std::ostream& os, const Puzzle& puzzle) {
 		}
 		os << '\n';
 	}
+	os << '\n';
 
 	return os;
 }
