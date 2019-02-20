@@ -8,7 +8,9 @@
  */
 
 #include <iostream>
+#include <chrono>
 #include <map>
+#include <unordered_map>
 
 // 
 // breadthFirst(graph, getActions, goalTest)
@@ -33,7 +35,11 @@ void BlindSearch<State>::breadthFirst(State graph,
 	frontier.emplace_back("root");
 
 	// Explored map with stateId's
-	std::map<std::string, State> explored;
+	std::map<State, std::string> explored;
+
+	// Record of a clock for outputing number of nodes every second
+	auto clockStart = std::chrono::high_resolution_clock::now();
+	int nodesPerSecond = 0;
 
 	// Enter an infinite loop
 	while(true) {
@@ -44,8 +50,15 @@ void BlindSearch<State>::breadthFirst(State graph,
 		}
 
 		// Grap the first node in the queue (adding it's state to explored) and expand
+		auto clockCurrent = std::chrono::high_resolution_clock::now();
+		if(std::chrono::duration_cast<std::chrono::milliseconds>(clockCurrent - clockStart).count() > 100) {
+			clockStart = clockCurrent;
+			std::cout << "Frontier length: " << frontier.size() << " | Explored Size: " << 
+					explored.size() << " | Nodes Per Second: " << nodesPerSecond << '\n';
+			nodesPerSecond = 0;
+		}
 		auto& node = searchGraph.getNode(frontier.front()); frontier.pop_front();
-		explored[node.stateId] = this->searchGraph.states.at(node.stateId);
+		explored[this->searchGraph.states.at(node.stateId)] = node.stateId;
 
 		auto actionList = getActions(this->searchGraph.states.at(node.stateId));
 		for(auto action = actionList.begin(); action != actionList.end(); ++action) {
@@ -54,14 +67,15 @@ void BlindSearch<State>::breadthFirst(State graph,
 			(*action)(s);
 			const auto child = searchGraph.addNode(1.0, node.nodeId);
 			this->searchGraph.addState(child, s);
-			int count = std::count_if(explored.begin(), explored.end(), 
+			int count = explored.count(s);
+			/*int count = std::count_if(explored.begin(), explored.end(), 
 					[&s](std::pair<std::string, State> item) ->bool {
 				return s == item.second;
-			});
-			count += std::count_if(frontier.begin(), frontier.end(), 
+			});*/
+			/*count += std::count_if(frontier.begin(), frontier.end(), 
 					[this, &s](std::string nodeId) -> bool {
 				return s == searchGraph.states.at(searchGraph.getNode(nodeId).stateId);
-			});
+			});*/
 			if(count == 0) {
 				if(goalTest(s)) {
 					this->generateSolution(child);
@@ -71,7 +85,7 @@ void BlindSearch<State>::breadthFirst(State graph,
 				frontier.emplace_back(child);
 			}
 		}
-		
+		++nodesPerSecond;
 	}
 
 }
@@ -90,10 +104,27 @@ void BlindSearch<State>::generateSolution(std::string nodeId) {
 		this->actions.emplace_back([s](State& dummy) {
 			std::cout << s;
 		});
-	} while(nodeId == "");
+	} while(nodeId != "");
 
 	// Finally reverse the action queue
 	std::reverse(this->actions.begin(), this->actions.end());
+}
+
+// 
+// getAction()
+//
+template<typename State>
+std::function<void(State&)> BlindSearch<State>::getAction() {
+	auto action = this->actions.front(); this->actions.pop_front();
+	return action;
+}
+
+// 
+// hasAction()
+//
+template<typename State>
+bool BlindSearch<State>::hasAction() {
+	return this->actions.size() != 0;
 }
 
 // 

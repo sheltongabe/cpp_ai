@@ -46,6 +46,14 @@ class BlindSearch {
 		 */
 		bool wasSuccessful();
 
+		/**
+		 * @brief	remove an action from the front of the actions deque and return it
+		 */
+		std::function<void(State&)> getAction();
+
+		/// Is there an action remaining in the actions deque
+		bool hasAction();
+
 	private:
 		/// Graph to hold search space
 		Graph<State> searchGraph;

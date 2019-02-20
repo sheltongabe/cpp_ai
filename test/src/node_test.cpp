@@ -32,12 +32,12 @@ double heuristicFunction(const Puzzle& puzzle);
 std::vector<std::function<void(Puzzle&)>> getActions(const Puzzle& puzzle);
 
 /// Solve a puzzle that is randomly generated
-void solvePuzzle();
+bool solvePuzzle();
 
 void testGraphClass();
 
 int main() {
-	testGraphClass();
+	/*testGraphClass();
 	
 	// Test solvePuzzle Items
 	Puzzle p = Puzzle::getStructure("data.dat");
@@ -54,9 +54,14 @@ int main() {
 		(*itr)(tmp);
 
 		std::cout << "action: \n" << tmp;
+	}*/
+	int numSucceeded = 0;
+	for(int i = 0; i < 20000; ++i) {
+		if(solvePuzzle())
+			++numSucceeded;
 	}
 
-	solvePuzzle();
+	std::cout << "Solved " << numSucceeded << " / 20,000 with Breadth first\n";
 
 	return 0;
 }
@@ -64,7 +69,9 @@ int main() {
 // 
 // solvePuzzle()
 //
-void solvePuzzle() {
+bool solvePuzzle() {
+	// std::cout << "Solving Puzzle: \n";
+
 	// Generate the puzzle randomly
 	Puzzle initialState = Puzzle::generateRandom();
 
@@ -75,6 +82,16 @@ void solvePuzzle() {
 
 	BlindSearch<Puzzle> blindSearch;
 	blindSearch.breadthFirst(initialState, getActions, goalTest);
+	// std::cout << "Solved?: " << ((blindSearch.wasSuccessful()) ? "success" : "failed") << '\n';
+	
+	while(blindSearch.hasAction()) {
+		blindSearch.getAction()(initialState);
+	}
+
+	if(blindSearch.wasSuccessful())
+		std::cout << "-------------------------------\n\n";
+
+	return blindSearch.wasSuccessful();
 }
 
 // 
