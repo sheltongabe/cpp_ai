@@ -73,6 +73,15 @@ class Graph {
 		std::string addEdge(std::string sourceId, std::string destinationId, double cost, std::string edgeId = "");
 
 		/**
+		 * @brief	Add a State and set the passed nodeId to contain that State
+		 * @param	nodeId			Which node to start from
+		 * @param	state			State to add
+		 * @param	stateId			Id of this state = ""
+		 * @return	std::string		StateId
+		 */
+		std::string addState(std::string nodeId, State state, std::string stateId = "");
+
+		/**
 		 * @brief	Get a reference to a Node identified by nodeId
 		 * @param	nodeId	Which node to get
 		 * @return	Node&
@@ -123,6 +132,9 @@ class Graph {
 
 		/// Next numerical id to use for a edge number
 		int nextEdgeId = 0;
+
+		/// Next numerical id to use for a state number
+		int nextStateId = 0;
 };
 
 #include "graph.cpp"

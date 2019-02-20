@@ -21,8 +21,14 @@
  */
 class Puzzle : public Graph<int> {
 	public:
-		/// Initializing constructor from Graph<int>
-		Puzzle(Graph<int> graph);
+		/// Defualt Constructor
+		Puzzle();
+
+		/// Initializing Constructor
+		Puzzle(Graph<int>& graph);
+
+		/// Copy constructor
+		Puzzle(const Puzzle& copy);
 	
 		/**
 		 * @brief	Input the structure of the Graph from a file

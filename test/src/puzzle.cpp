@@ -14,10 +14,26 @@
 #include "puzzle.h"
 
 // 
-// Puzzle(Graph<int>)
+// Puzzle()
 //
-Puzzle::Puzzle(Graph<int> graph) :
+Puzzle::Puzzle() :
+		Graph<int>() {
+
+}
+
+// 
+// Puzzle(Graph<int>&)
+//
+Puzzle::Puzzle(Graph<int>& graph) :
 		Graph<int>(graph) {
+
+}
+
+// 
+// Puzzle(const Puzzle&)
+//
+Puzzle::Puzzle(const Puzzle& copy) :
+		Graph<int>(copy) {
 
 }
 

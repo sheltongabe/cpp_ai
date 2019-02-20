@@ -41,6 +41,7 @@ template<typename State>
 std::string Graph<State>::addNode(double cost, std::string parentId, std::string nodeId) {
 	Node n;
 	n.graphId = this->graphId;
+	n.parentId = parentId;
 	n.nodeId = (nodeId != "") ? nodeId : "node_" + std::to_string(this->nextNodeId++);
 	this->nodes[n.nodeId] = n;
 
@@ -69,6 +70,20 @@ std::string Graph<State>::addEdge(std::string source, std::string destination, d
 
 
 	return e.edgeId;
+}
+
+// 
+// addState(std::string, std::string) -> std::string
+//
+template<typename State>
+std::string Graph<State>::addState(std::string nodeId, State state, std::string stateId) {
+	// generate StateId
+	stateId = (stateId != "") ? stateId : "state_" + std::to_string(this->nextStateId++);
+
+	this->states[stateId] = state;
+	this->getNode(nodeId).stateId = stateId;
+
+	return stateId;
 }
 
 // 

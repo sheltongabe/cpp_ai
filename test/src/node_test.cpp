@@ -5,6 +5,8 @@
 #include <iostream>
 #include <functional>
 
+#include "cpp_ai/blind_search.h"
+
 #include "graph_tester.h"
 #include "puzzle.h"
 
@@ -70,6 +72,9 @@ void solvePuzzle() {
 	std::function<bool(const Puzzle&)> goal = goalTest;
 	std::function<double(const Puzzle&)> heuristic = heuristicFunction;
 	std::function<std::vector<std::function<void(Puzzle&)>>(const Puzzle&)> actions = getActions;
+
+	BlindSearch<Puzzle> blindSearch;
+	blindSearch.breadthFirst(initialState, getActions, goalTest);
 }
 
 // 
@@ -123,7 +128,7 @@ std::vector<std::function<void(Puzzle&)>> getActions(const Puzzle& puzzle) {
 	}
 
 	return actions;
-}
+	}
 
 void testGraphClass() {
 	GraphTester graphTester;
