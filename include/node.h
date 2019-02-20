@@ -35,18 +35,27 @@ class Node {
 		/// The cost to get to the origin of the search (used in searches)
 		double costToOrigin;
 
+		/// Estimated cost from this node to goal (used by InformedSearch)
+		double estimatedCost;
+
 		/// The Ids of the nodes that can be reached from this node
 		std::vector<std::string> neighborEdgeIds;
 
 		/// Id of the state this node represents
 		std::string stateId;
 
+		friend inline bool operator<(const Node& lhs, const Node& rhs);
 		friend inline bool operator==(const Node& lhs, const Node& rhs);
 		friend inline bool operator!=(const Node& lhs, const Node& rhs);
 
 	private:
 
 };
+
+inline bool operator<(const Node& lhs, const Node& rhs) {
+	// Invert it to make sure the heap is ordered in min heap form during InformedSearches
+	return !(lhs.estimatedCost < rhs.estimatedCost);
+}
 
 // 
 // operator==
