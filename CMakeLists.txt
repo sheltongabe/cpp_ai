@@ -14,7 +14,7 @@ include(cmake/Root.cmake)
 set(CPP_AI_LIB "cpp_ai")
 
 # Make sure the compiler is at least c++14
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -std=c++11")
 
 # Start the project
 project("${CPP_AI_LIB}")

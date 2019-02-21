@@ -50,7 +50,7 @@ void BlindSearch<State>::breadthFirst(State graph,
 
 		// Grap the first node in the queue (adding it's state to explored) and expand
 		auto clockCurrent = std::chrono::high_resolution_clock::now();
-		if(std::chrono::duration_cast<std::chrono::milliseconds>(clockCurrent - clockStart).count() > 100) {
+		if(std::chrono::duration_cast<std::chrono::milliseconds>(clockCurrent - clockStart).count() > 1000) {
 			clockStart = clockCurrent;
 			std::cout << "Frontier length: " << frontier.size() << " | Explored Size: " << 
 					explored.size() << " | Nodes Per Second: " << nodesPerSecond << '\n';
