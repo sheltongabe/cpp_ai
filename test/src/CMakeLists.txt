@@ -23,3 +23,6 @@ add_executable(${EXE_NAME}
 
 # Link it
 target_link_libraries(${EXE_NAME} "${CPP_AI_LIB}_static")
+
+# Copy the puzzle graph structure to bin folder
+file(COPY "data.dat" DESTINATION "${CMAKE_SOURCE_DIR}/bin")
