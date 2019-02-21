@@ -35,9 +35,35 @@ class InformedSearch {
 		void aStar(State initialState,
 				std::function<std::vector<std::function<void(State&)>>(const State&)> getActions,
 				std::function<bool(const State&)> goalTest,
-				std::function<double(const Puzzle&)> heuristic);
+				std::function<double(const State&)> heuristic);
+
+		/**
+		 * @brief	Get a solution by going reversing the tree and queuing actions.  It reverses it at the end
+		 * @param	nodeId	Node to start at
+		 */
+		void generateSolution(std::string nodeId);
+
+		/**
+		 * @brief	Return whether or not a search was successful
+		 * @return 	bool	Was the search successful
+		 */
+		bool wasSuccessful();
+
+		/// Remove an action from the front of the actions deque and return it
+		std::function<void(State&)> getAction();
+
+		/// Is there an action remaining in the actions deque
+		bool hasAction();
 
 	private:
+		/// Graph to use for search
+		Graph<State> searchGraph;
+
+		/// deque of actions after a successful search
+		std::deque<std::function<void(State&)>> actions;
+
+		/// Was the search successful
+		bool successful;
 
 };
 

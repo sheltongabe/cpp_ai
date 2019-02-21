@@ -64,11 +64,11 @@ void BlindSearch<State>::breadthFirst(State graph,
 			// add create and add node to frontier adding the appropriate state
 			State s(searchGraph.states.at(node.stateId));
 			(*action)(s);
-			const auto child = searchGraph.addNode(1.0, node.nodeId);
-			this->searchGraph.addState(child, s);
 			int count = explored.count(s);
 
 			if(count == 0) {
+				const auto child = searchGraph.addNode(1.0, node.nodeId);
+				this->searchGraph.addState(child, s);
 				if(goalTest(s)) {
 					this->generateSolution(child);
 					this->successful = true;

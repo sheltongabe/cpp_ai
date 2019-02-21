@@ -8,8 +8,10 @@
 #include <cmath>
 
 #include "cpp_ai/blind_search.h"
+#include "cpp_ai/informed_search.h"
 
 #include "graph_tester.h"
+#include "timer.h"
 #include "puzzle.h"
 
 /**
@@ -34,7 +36,10 @@ double heuristicFunction(const Puzzle& puzzle);
 std::vector<std::function<void(Puzzle&)>> getActions(const Puzzle& puzzle);
 
 /// Solve a puzzle that is randomly generated
-bool solvePuzzle();
+bool solveBreadth();
+
+/// Solve a puzzle with A-Star
+bool solveAStar();
 
 void testGraphClass();
 
@@ -58,20 +63,61 @@ int main() {
 		std::cout << "action: \n" << tmp;
 	}*/
 	int numSucceeded = 0;
+	Timer timer;
+	timer.startTimer();
 	for(int i = 0; i < 20000; ++i) {
-		if(solvePuzzle())
+		if(solveBreadth())
 			++numSucceeded;
 	}
 
 	std::cout << "Solved " << numSucceeded << " / 20,000 with Breadth first\n";
+	std::cout << "Took: " << timer.timeElapsed() / 1000000 << " seconds.\n\n";
+
+	numSucceeded = 0;
+	timer.startTimer();
+	for(int i = 0; i < 20000; ++i) {
+		if(solveAStar())
+			++numSucceeded;
+	}
+
+	std::cout << "Solved " << numSucceeded << " / 20,000 with A*\n";
+	std::cout << "Took: " << timer.timeElapsed() / 1000000 << " seconds.\n\n";
 
 	return 0;
 }
 
 // 
-// solvePuzzle()
+// solveAStar()
 //
-bool solvePuzzle() {
+bool solveAStar() {
+	// std::cout << "Solving Puzzle: \n";
+
+	// Generate the puzzle randomly
+	Puzzle initialState = Puzzle::generateRandom();
+
+	// create the std::functions to the traits for solving the problem
+	std::function<bool(const Puzzle&)> goal = goalTest;
+	std::function<double(const Puzzle&)> heuristic = heuristicFunction;
+	std::function<std::vector<std::function<void(Puzzle&)>>(const Puzzle&)> actions = getActions;
+
+	InformedSearch<Puzzle> informedSearch;
+	informedSearch.aStar(initialState, getActions, goalTest, heuristic);
+	// std::cout << "Solved?: " << ((blindSearch.wasSuccessful()) ? "success" : "failed") << '\n';
+	
+	while(informedSearch.hasAction()) {
+		informedSearch.getAction()(initialState);
+	}
+
+	if(informedSearch.wasSuccessful())
+		std::cout << "-------------------------------\n\n";
+
+	return informedSearch.wasSuccessful();
+}
+
+// 
+// solveBreadth()
+//
+bool solveBreadth() {
 	// std::cout << "Solving Puzzle: \n";
 
 	// Generate the puzzle randomly
@@ -117,12 +163,16 @@ bool goalTest(const Puzzle& puzzle) {
 double heuristicFunction(const Puzzle& puzzle) {
 
 	// For each value in the array of possible values
-	const std::vector<int> targetLocations = {8, 0, 1, 2, 3, 4, 5, 6, 7};
+	const std::vector<int> targetLocations = {1, 2, 3, 4, 5, 6, 7, 8, 0};
 	auto values = puzzle.getVector();
 
 	double cost = 0.0;
 	for(int i = 0; i < 9; ++i) {
-		cost += abs(i / 3 - targetLocations[values[i]] / 3) + abs(i % 3 - targetLocations[values[i]] % 3);
+		// Manhattan distance
+		// cost += abs(i / 3 - targetLocations[values[i]] / 3) + abs(i % 3 - targetLocations[values[i]] % 3);
+		
+		// Misplaced tiles
+		cost += values[i] == targetLocations[i];
 	}
 
 	return cost;
