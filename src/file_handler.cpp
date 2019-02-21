@@ -26,7 +26,7 @@ std::string FileHandler::readFile(const std::string& filename) {
 	try {
 		// buffer
 		std::string line;
-		std::ifstream file(filename);
+		std::ifstream file(filename.c_str());
 
 		// Input the file until the end is hit
 		while(!file.eof()) {
@@ -50,7 +50,7 @@ std::string FileHandler::readFile(const std::string& filename) {
 void FileHandler::writeFile(const std::string& filename, const std::string& data) {
 	// Try to Open the file
 	try {
-		std::ofstream file(filename, std::ofstream::out);
+		std::ofstream file(filename.c_str(), std::ofstream::out);
 		file << data;
 		file.close();
 	}
