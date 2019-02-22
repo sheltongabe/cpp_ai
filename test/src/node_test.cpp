@@ -172,7 +172,7 @@ double heuristicFunction(const Puzzle& puzzle) {
 		// cost += abs(i / 3 - targetLocations[values[i]] / 3) + abs(i % 3 - targetLocations[values[i]] % 3);
 		
 		// Misplaced tiles
-		cost += values[i] == targetLocations[i];
+		cost += values[i] != targetLocations[i];
 	}
 
 	return cost;
